@@ -12,35 +12,32 @@ import com.cztang.riskguard.databinding.ViewholderChildDeviceBinding
 import com.cztang.riskguard.databinding.ViewholderParentDeviceBinding
 import pokercc.android.expandablerecyclerview.ExpandableAdapter
 
-class MarketChildVH(val binding: ViewholderChildDeviceBinding) :
+class DeviceChildVH(val binding: ViewholderChildDeviceBinding) :
     ExpandableAdapter.ViewHolder(binding.root)
 
-class MarketParentVH(val binding: ViewholderParentDeviceBinding) :
+class DeviceParentVH(val binding: ViewholderParentDeviceBinding) :
     ExpandableAdapter.ViewHolder(binding.root)
 
-private val names = listOf(
-    "Nathaniel Fitzgerald",
-    "Lawrence Fuller",
-    "Jacob Mullins",
-    "Jesus Lewis",
-    "Johnny Marr"
+private val parentTitle = listOf(
+    "Cpu Info",
+    "System Info",
+    "Serial Info"
 )
 
-class DeviceAdapter : ExpandableAdapter<ExpandableAdapter.ViewHolder>() {
+class DeviceAdapter() : ExpandableAdapter<ExpandableAdapter.ViewHolder>() {
     override fun onCreateGroupViewHolder(
         viewGroup: ViewGroup,
         viewType: Int
     ): ExpandableAdapter.ViewHolder = LayoutInflater.from(viewGroup.context)
         .let { ViewholderParentDeviceBinding.inflate(it, viewGroup, false) }
-        .let { MarketParentVH(it) }
-
+        .let { DeviceParentVH(it) }
 
     override fun onCreateChildViewHolder(
         viewGroup: ViewGroup,
         viewType: Int
     ): ExpandableAdapter.ViewHolder = LayoutInflater.from(viewGroup.context)
         .let { ViewholderChildDeviceBinding.inflate(it, viewGroup, false) }
-        .let { MarketChildVH(it) }
+        .let { DeviceChildVH(it) }
 
     override fun onBindChildViewHolder(
         holder: ExpandableAdapter.ViewHolder,
@@ -48,8 +45,9 @@ class DeviceAdapter : ExpandableAdapter<ExpandableAdapter.ViewHolder>() {
         childPosition: Int,
         payloads: List<Any>
     ) {
-        holder as MarketChildVH
-        holder.binding.title.text = names.getOrNull(childPosition)
+        holder as DeviceChildVH
+        holder.binding.childDevice.text = parentTitle.getOrNull(childPosition)
+
         val childCount = getChildCount(groupPosition)
         val radius = 4.dpToPx()
         val shape = when {
@@ -84,16 +82,15 @@ class DeviceAdapter : ExpandableAdapter<ExpandableAdapter.ViewHolder>() {
         expand: Boolean,
         payloads: List<Any>
     ) {
-        holder as MarketParentVH
+        holder as DeviceParentVH
+        holder.binding.parentDevice.text = parentTitle.getOrNull(groupPosition)
         if (payloads.isEmpty()) {
-            val arrowImage = holder.binding.arrowImage
+            val arrowImage = holder.binding.arrowDevice
             arrowImage.rotation = if (expand) -180f else 0f
             val circleDrawable = CircleDrawable()
             arrowImage.background = circleDrawable
             circleDrawable.progress = if (expand) 1f else 0f
-//            holder.binding.shadowView.alpha = if (expand) 1f else 0f
         }
-
     }
 
     override fun onGroupViewHolderExpandChange(
@@ -102,22 +99,21 @@ class DeviceAdapter : ExpandableAdapter<ExpandableAdapter.ViewHolder>() {
         animDuration: Long,
         expand: Boolean
     ) {
-        holder as MarketParentVH
-        val arrowImage = holder.binding.arrowImage
+        holder as DeviceParentVH
+        val arrowImage = holder.binding.arrowDevice
         arrowImage.animate()
             .setDuration(animDuration)
             .rotation(if (expand) -180f else 0f)
             .setUpdateListener {
                 val progress = if (expand) it.animatedFraction else 1 - it.animatedFraction
                 (arrowImage.background as CircleDrawable).progress = progress
-//                holder.binding.shadowView.alpha = progress
             }
             .start()
     }
 
-    override fun getGroupCount(): Int = 6
+    override fun getGroupCount(): Int = parentTitle.size
 
-    override fun getChildCount(groupPosition: Int): Int = 5
+    override fun getChildCount(groupPosition: Int): Int = 1
 }
 
 private class CircleDrawable : ShapeDrawable(OvalShape()) {

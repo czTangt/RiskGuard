@@ -45,5 +45,4 @@ fun Activity.fullScreen() {
         option
     }
     window.statusBarColor = Color.TRANSPARENT
-
 }

@@ -1,4 +1,4 @@
-package com.cztang.riskguard.Domain
+package com.cztang.riskguard.UiUtil
 
 import android.graphics.Canvas
 import android.graphics.Paint
@@ -8,7 +8,6 @@ import androidx.core.view.iterator
 import androidx.recyclerview.widget.RecyclerView
 import pokercc.android.expandablerecyclerview.ExpandableAdapter
 import pokercc.android.expandablerecyclerview.ExpandableRecyclerView
-import com.cztang.riskguard.UiUtil.dpToPx
 
 class DeviceItemDecoration : RecyclerView.ItemDecoration() {
     private val linePaint = Paint().apply {

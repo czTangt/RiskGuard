@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cztang.riskguard.databinding.ActivityDeviceBinding
 import pokercc.android.expandablerecyclerview.ExpandableItemAnimator
 import pokercc.android.expandablerecyclerview.sample.markets.DeviceAdapter
-import com.cztang.riskguard.Domain.DeviceItemDecoration
+import com.cztang.riskguard.UiUtil.DeviceItemDecoration
 
 class DeviceActivity : AppCompatActivity() {
 

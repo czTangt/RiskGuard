@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff64637"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,9 +23,9 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="15dp"
-            android:text="Markets"
-            android:textColor="#000"
-            android:textSize="18sp"
+            android:text="Device"
+            android:textColor="@color/dark_blue"
+            android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -39,7 +38,7 @@
             android:layout_marginEnd="10dp"
             android:padding="10dp"
             android:text="More"
-            android:textColor="#7a7a7a"
+            android:textColor="@color/dark_blue"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/title"
             app:layout_constraintEnd_toEndOf="parent"
