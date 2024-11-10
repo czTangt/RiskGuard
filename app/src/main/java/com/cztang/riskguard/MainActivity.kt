@@ -15,8 +15,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Example of a call to a native method
-        binding.sampleText.text = stringFromJNI()
     }
 
     /**
@@ -28,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         // Used to load the 'riskguard' library on application startup.
         init {
-            System.loadLibrary("riskguard")
+            System.loadLibrary("RiskGuard")
         }
     }
 }
