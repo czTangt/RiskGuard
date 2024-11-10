@@ -16,6 +16,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat.*
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.cztang.riskguard.Activity.DeviceActivity
 import com.cztang.riskguard.Activity.MainActivity
 import com.cztang.riskguard.Domain.OngoingDomain
 import com.cztang.riskguard.R
@@ -72,7 +73,7 @@ class OngoingAdapter(private val items: ArrayList<OngoingDomain>) : RecyclerView
 
         // Set click event listener, click different items to jump to different Activities
         holder.itemView.setOnClickListener {
-            val intent = if (position == 0) Intent(context, MainActivity::class.java) else Intent(context, MainActivity::class.java)
+            val intent = if (position == 0) Intent(context, DeviceActivity::class.java) else Intent(context, MainActivity::class.java)
             context?.startActivity(intent)
         }
     }
