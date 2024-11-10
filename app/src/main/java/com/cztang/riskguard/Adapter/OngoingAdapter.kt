@@ -51,7 +51,7 @@ class OngoingAdapter(private val items: ArrayList<OngoingDomain>) : RecyclerView
 
         // Configure background color for position 0 as dark, others as light
         if (position == 0) {
-            holder.layout.setBackgroundResource(R.drawable.dark_background)
+            holder.layout.setBackgroundResource(R.drawable.bg_dark)
             context?.getColor(R.color.white)?.let { holder.title.setTextColor(it) }
             context?.getColor(R.color.white)?.let { holder.date.setTextColor(it) }
             context?.getColor(R.color.white)?.let { holder.progressText.setTextColor(it) }
@@ -60,7 +60,7 @@ class OngoingAdapter(private val items: ArrayList<OngoingDomain>) : RecyclerView
             holder.progressBar.progressTintList = context?.getColor(R.color.white)
                 ?.let { ColorStateList.valueOf(it) }
         } else {
-            holder.layout.setBackgroundResource(R.drawable.light_background)
+            holder.layout.setBackgroundResource(R.drawable.bg_light)
             context?.getColor(R.color.dark_blue)?.let { holder.title.setTextColor(it) }
             context?.getColor(R.color.dark_blue)?.let { holder.date.setTextColor(it) }
             context?.getColor(R.color.dark_blue)?.let { holder.progressText.setTextColor(it) }

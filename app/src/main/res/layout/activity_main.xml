@@ -48,7 +48,7 @@
                 android:layout_height="55dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/edittext_background"
+                android:background="@drawable/bg_edittext"
                 android:drawableStart="@drawable/icon_search"
                 android:drawablePadding="16dp"
                 android:ems="10"
@@ -62,7 +62,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
-                android:background="@drawable/banner_background">
+                android:background="@drawable/bg_banner">
 
                 <TextView
                     android:id="@+id/welcomeText_main"
@@ -94,7 +94,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:src="@drawable/icon_home"
+                    android:src="@drawable/icon_person"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

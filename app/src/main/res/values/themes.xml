@@ -1,16 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.RiskGuard" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!--        &lt;!&ndash; Primary brand color. &ndash;&gt;-->
+        <!--        <item name="colorPrimary">@color/purple_500</item>-->
+        <!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
+        <!--        <item name="colorOnPrimary">@color/white</item>-->
+        <!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
+        <!--        <item name="colorSecondary">@color/teal_200</item>-->
+        <!--        <item name="colorSecondaryVariant">@color/teal_700</item>-->
+        <!--        <item name="colorOnSecondary">@color/black</item>-->
+        <!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
+        <!--        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>-->
+        <!--        配置状态栏为白色，和主题颜色搭配-->
         <!-- Customize your theme here. -->
+        <!-- 透明状态栏 -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <!-- 使状态栏图标和文字为深色，以便在透明背景上可见 -->
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>
