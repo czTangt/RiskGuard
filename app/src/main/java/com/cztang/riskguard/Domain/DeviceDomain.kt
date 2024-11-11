@@ -1,6 +1,6 @@
 package com.cztang.riskguard.Domain
 
-data class DeviceDomain (
+data class DeviceDomain(
     val parentTitle: String,
     val childData: String
 )

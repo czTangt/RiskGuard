@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.os.Build;
 import android.util.Log;
 
-
 import com.cztang.riskguard.Activity.DeviceActivity;
 
 import org.lsposed.hiddenapibypass.HiddenApiBypass;
@@ -12,7 +11,7 @@ import org.lsposed.hiddenapibypass.HiddenApiBypass;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class SystemInfo extends Device{
+public class SystemInfo extends Device {
 
     public SystemInfo(DeviceActivity deviceActivity) {
         super(deviceActivity);
@@ -69,6 +68,6 @@ public class SystemInfo extends Device{
     }
 
     public String getSystemInfo() {
-        return getBuildInfo() + getBaseband() ;
+        return getBuildInfo() + getBaseband();
     }
 }

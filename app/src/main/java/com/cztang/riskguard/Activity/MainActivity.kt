@@ -1,8 +1,8 @@
 package com.cztang.riskguard.Activity
 
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cztang.riskguard.Adapter.OngoingAdapter
 import com.cztang.riskguard.Domain.OngoingDomain
@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
 
         initRecyclerView()
     }
-
 
     private fun initRecyclerView() {
         val items = ArrayList<OngoingDomain>().apply {

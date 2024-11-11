@@ -13,7 +13,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/device_bg"
+        android:background="@drawable/bg_device"
         android:orientation="vertical">
 
         <TextView

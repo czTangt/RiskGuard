@@ -51,6 +51,7 @@ class DeviceAdapter(
             childCount == 1 -> {
                 RoundRectShape(FloatArray(8) { radius }, null, null)
             }
+
             childPosition == 0 -> {
                 RoundRectShape(
                     floatArrayOf(radius, radius, radius, radius, 0f, 0f, 0f, 0f),
@@ -58,12 +59,14 @@ class DeviceAdapter(
                     null
                 )
             }
+
             childPosition == childCount - 1 -> {
                 RoundRectShape(
                     floatArrayOf(0f, 0f, 0f, 0f, radius, radius, radius, radius),
                     null, null
                 )
             }
+
             else -> {
                 RoundRectShape(null, null, null)
             }
@@ -115,8 +118,8 @@ class DeviceAdapter(
 
 private class CircleDrawable : ShapeDrawable(OvalShape()) {
     private val argbEvaluator = ArgbEvaluator()
-    private val startColor = 0xff494949.toInt()
-    private val endColor = 0xfff64637.toInt()
+    private val startColor = 0xffEBF1FD.toInt() // light_blue
+    private val endColor = 0xff11366A.toInt() // dark_blue
     var progress: Float = 0f
         set(value) {
             paint.color = argbEvaluator.evaluate(value, startColor, endColor) as Int

@@ -13,7 +13,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat.*
+import androidx.core.content.ContextCompat.getColor
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cztang.riskguard.Activity.DeviceActivity
@@ -21,14 +21,16 @@ import com.cztang.riskguard.Activity.MainActivity
 import com.cztang.riskguard.Domain.OngoingDomain
 import com.cztang.riskguard.R
 
-class OngoingAdapter(private val items: ArrayList<OngoingDomain>) : RecyclerView.Adapter<OngoingAdapter.ViewHolder>() {
+class OngoingAdapter(private val items: ArrayList<OngoingDomain>) :
+    RecyclerView.Adapter<OngoingAdapter.ViewHolder>() {
 
     private var context: Context? = null
 
     @NonNull
     override fun onCreateViewHolder(@NonNull parent: ViewGroup, viewType: Int): ViewHolder {
         context = parent.context
-        val inflater = LayoutInflater.from(context).inflate(R.layout.viewholder_ongoing, parent, false)
+        val inflater =
+            LayoutInflater.from(context).inflate(R.layout.viewholder_ongoing, parent, false)
         return ViewHolder(inflater)
     }
 
@@ -66,14 +68,20 @@ class OngoingAdapter(private val items: ArrayList<OngoingDomain>) : RecyclerView
             context?.getColor(R.color.dark_blue)?.let { holder.date.setTextColor(it) }
             context?.getColor(R.color.dark_blue)?.let { holder.progressText.setTextColor(it) }
             context?.getColor(R.color.dark_blue)?.let { holder.progressBarPercent.setTextColor(it) }
-            holder.pic.setColorFilter(getColor(context!!, R.color.dark_blue), PorterDuff.Mode.SRC_IN)
+            holder.pic.setColorFilter(
+                getColor(context!!, R.color.dark_blue),
+                PorterDuff.Mode.SRC_IN
+            )
             holder.progressBar.progressTintList = context?.getColor(R.color.dark_blue)
                 ?.let { ColorStateList.valueOf(it) }
         }
 
         // Set click event listener, click different items to jump to different Activities
         holder.itemView.setOnClickListener {
-            val intent = if (position == 0) Intent(context, DeviceActivity::class.java) else Intent(context, MainActivity::class.java)
+            val intent = if (position == 0) Intent(context, DeviceActivity::class.java) else Intent(
+                context,
+                MainActivity::class.java
+            )
             context?.startActivity(intent)
         }
     }

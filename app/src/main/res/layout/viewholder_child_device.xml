@@ -7,7 +7,7 @@
     android:elevation="3dp"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
-    android:background="@drawable/device_child_item_bg">
+    android:background="@drawable/bg_device_item">
 
     <TextView
         android:id="@+id/child_device"
@@ -23,22 +23,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
-
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginEnd="15dp"-->
-<!--        android:background="@drawable/device_bg"-->
-<!--        android:paddingStart="10dp"-->
-<!--        android:paddingTop="4dp"-->
-<!--        android:paddingEnd="10dp"-->
-<!--        android:paddingBottom="4dp"-->
-<!--        android:text="$3.45"-->
-<!--        android:textColor="#fff"-->
-<!--        android:textSize="12sp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        tools:ignore="HardcodedText" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
