@@ -1,7 +1,5 @@
 package com.cztang.riskguard.Activity
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,5 +38,8 @@ class DeviceActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context)
         }
 
+        binding.more.setOnClickListener {
+            (binding.recyclerView.adapter as? DeviceAdapter)?.expandAllGroups()
+        }
     }
 }

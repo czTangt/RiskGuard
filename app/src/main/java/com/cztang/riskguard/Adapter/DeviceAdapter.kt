@@ -114,6 +114,12 @@ class DeviceAdapter(
     override fun getGroupCount(): Int = deviceData.size
 
     override fun getChildCount(groupPosition: Int): Int = deviceData[groupPosition].childData.size
+
+    fun expandAllGroups() {
+        for (i in 0 until getGroupCount()) {
+            expandGroup(i, true)
+        }
+    }
 }
 
 private class CircleDrawable : ShapeDrawable(OvalShape()) {
