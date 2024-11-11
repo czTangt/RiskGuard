@@ -10,4 +10,12 @@ public class Device {
     public Device(DeviceActivity deviceActivity) {
         this.deviceActivity = deviceActivity;
     }
+
+    static {
+        System.loadLibrary("device");
+    }
+
+    public native String getHardDiskInfor();
+
+    public native String getKernelInfor();
 }

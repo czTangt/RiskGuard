@@ -39,9 +39,9 @@ public class SerialInfo extends Device {
         String serial2 = getSerialNumbers2();
 
         if (serial1.equals(serial2)) {
-            return "Android Id: " + serial1;
+            return "Serial Number: " + serial1;
         } else {
-            return "Android Id Get Wrong";
+            return "Error: Failed to get serial number ";
         }
     }
 }

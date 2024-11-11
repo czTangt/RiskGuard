@@ -9,12 +9,18 @@ import androidx.recyclerview.widget.RecyclerView
 import pokercc.android.expandablerecyclerview.ExpandableAdapter
 import pokercc.android.expandablerecyclerview.ExpandableRecyclerView
 
+/**
+ * DeviceItemDecoration 类主要用于在 ExpandableRecyclerView 中绘制分割线和设置项的偏移量。
+ */
 class DeviceItemDecoration : RecyclerView.ItemDecoration() {
     private val linePaint = Paint().apply {
         color = 0xfff6f6f8.toInt()
         strokeWidth = 1.dpToPx()
     }
 
+    /**
+     * onDrawOver 方法用于绘制分割线。
+     */
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDrawOver(c, parent, state)
         parent as ExpandableRecyclerView
@@ -41,6 +47,9 @@ class DeviceItemDecoration : RecyclerView.ItemDecoration() {
         }
     }
 
+    /**
+     * getItemOffsets 方法用于设置项的偏移量。
+     */
     override fun getItemOffsets(
         outRect: Rect,
         view: View,

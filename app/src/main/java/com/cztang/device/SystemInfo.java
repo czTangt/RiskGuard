@@ -30,7 +30,7 @@ public class SystemInfo extends Device {
         // infoBuilder.append(Build.getRadioVersion()).append("\n");
 
 //        Log.i(TAG, infoBuilder.toString());
-        return "BuildInfo: " + infoBuilder + "\n";
+        return "BuildInfo: " + infoBuilder;
     }
 
     // 获取基带版本，和 Build.getRadioVersion() 方法效果相同，但后者在 API 24 及以上版本可用

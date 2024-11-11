@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cztang.device.CpuInfo
+import com.cztang.device.Device
 import com.cztang.device.SerialInfo
 import com.cztang.device.SystemInfo
 import com.cztang.riskguard.Domain.DeviceDomain
@@ -27,6 +28,8 @@ class DeviceActivity : AppCompatActivity() {
             add(DeviceDomain("Cpu Info", CpuInfo(this@DeviceActivity).cpuInfo))
             add(DeviceDomain("Serial Info", SerialInfo(this@DeviceActivity).androidId))
             add(DeviceDomain("System Info", SystemInfo(this@DeviceActivity).systemInfo))
+            add(DeviceDomain("HardDisk Info", Device(this@DeviceActivity).hardDiskInfor))
+            add(DeviceDomain("Kernel Info", Device(this@DeviceActivity).kernelInfor))
         }
         with(binding.recyclerView) {
             adapter = DeviceAdapter(items)
