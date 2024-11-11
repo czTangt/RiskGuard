@@ -5,6 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cztang.device.CpuInfo
+import com.cztang.device.SerialInfo
+import com.cztang.device.SystemInfo
+import com.cztang.riskguard.Domain.DeviceDomain
+import com.cztang.riskguard.Domain.OngoingDomain
 import com.cztang.riskguard.databinding.ActivityDeviceBinding
 import pokercc.android.expandablerecyclerview.ExpandableItemAnimator
 import pokercc.android.expandablerecyclerview.sample.markets.DeviceAdapter
@@ -23,8 +28,15 @@ class DeviceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        // 创建 DeviceDomain 的 ArrayList
+        val items = ArrayList<DeviceDomain>().apply {
+            add(DeviceDomain("Cpu Info", CpuInfo(this@DeviceActivity).curCpuFreq))
+            add(DeviceDomain("Serial Info", SerialInfo(this@DeviceActivity).androidId))
+            add(DeviceDomain("System Info", SystemInfo(this@DeviceActivity).systemInfo))
+        }
         with(binding.recyclerView) {
-            adapter = DeviceAdapter()
+            adapter = DeviceAdapter(items)
             itemAnimator = ExpandableItemAnimator(this, animChildrenItem = true)
             addItemDecoration(DeviceItemDecoration())
             layoutManager = LinearLayoutManager(context)

@@ -7,6 +7,7 @@ import android.graphics.drawable.shapes.OvalShape
 import android.graphics.drawable.shapes.RoundRectShape
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.cztang.riskguard.Domain.DeviceDomain
 import com.cztang.riskguard.UiUtil.dpToPx
 import com.cztang.riskguard.databinding.ViewholderChildDeviceBinding
 import com.cztang.riskguard.databinding.ViewholderParentDeviceBinding
@@ -18,13 +19,9 @@ class DeviceChildVH(val binding: ViewholderChildDeviceBinding) :
 class DeviceParentVH(val binding: ViewholderParentDeviceBinding) :
     ExpandableAdapter.ViewHolder(binding.root)
 
-private val parentTitle = listOf(
-    "Cpu Info",
-    "System Info",
-    "Serial Info"
-)
-
-class DeviceAdapter() : ExpandableAdapter<ExpandableAdapter.ViewHolder>() {
+class DeviceAdapter(
+    private val deviceData: List<DeviceDomain>
+) : ExpandableAdapter<ExpandableAdapter.ViewHolder>() {
     override fun onCreateGroupViewHolder(
         viewGroup: ViewGroup,
         viewType: Int
@@ -46,7 +43,7 @@ class DeviceAdapter() : ExpandableAdapter<ExpandableAdapter.ViewHolder>() {
         payloads: List<Any>
     ) {
         holder as DeviceChildVH
-        holder.binding.childDevice.text = parentTitle.getOrNull(childPosition)
+        holder.binding.childDevice.text = deviceData[groupPosition].childData
 
         val childCount = getChildCount(groupPosition)
         val radius = 4.dpToPx()
@@ -83,7 +80,7 @@ class DeviceAdapter() : ExpandableAdapter<ExpandableAdapter.ViewHolder>() {
         payloads: List<Any>
     ) {
         holder as DeviceParentVH
-        holder.binding.parentDevice.text = parentTitle.getOrNull(groupPosition)
+        holder.binding.parentDevice.text = deviceData[groupPosition].parentTitle
         if (payloads.isEmpty()) {
             val arrowImage = holder.binding.arrowDevice
             arrowImage.rotation = if (expand) -180f else 0f
@@ -111,7 +108,7 @@ class DeviceAdapter() : ExpandableAdapter<ExpandableAdapter.ViewHolder>() {
             .start()
     }
 
-    override fun getGroupCount(): Int = parentTitle.size
+    override fun getGroupCount(): Int = deviceData.size
 
     override fun getChildCount(groupPosition: Int): Int = 1
 }
