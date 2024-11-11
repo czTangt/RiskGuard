@@ -16,6 +16,7 @@ import pokercc.android.expandablerecyclerview.sample.markets.DeviceAdapter
 
 class DeviceActivity : AppCompatActivity() {
 
+    private var isExpanded = false
     // 延迟初始化，lazy 延迟初始化的目的是在需要使用 binding 时才进行初始化，从而避免在 onCreate 方法中直接初始化。
     private val binding by lazy { ActivityDeviceBinding.inflate(layoutInflater) }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,8 +39,16 @@ class DeviceActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context)
         }
 
-        binding.more.setOnClickListener {
-            (binding.recyclerView.adapter as? DeviceAdapter)?.expandAllGroups()
+        binding.viewChange.setOnClickListener {
+            val adapter = binding.recyclerView.adapter as? DeviceAdapter
+            if (isExpanded) {
+                adapter?.collapseAllGroups()
+                binding.viewChange.text = "Expand All"
+            } else {
+                adapter?.expandAllGroups()
+                binding.viewChange.text = "Collapse All"
+            }
+            isExpanded = !isExpanded
         }
     }
 }

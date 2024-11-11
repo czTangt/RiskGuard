@@ -120,6 +120,12 @@ class DeviceAdapter(
             expandGroup(i, true)
         }
     }
+
+    fun collapseAllGroups() {
+        for (i in 0 until getGroupCount()) {
+            collapseGroup(i, true)
+        }
+    }
 }
 
 private class CircleDrawable : ShapeDrawable(OvalShape()) {
