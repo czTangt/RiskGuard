@@ -75,7 +75,7 @@ Java_com_cztang_device_Device_getKernelInfor(JNIEnv *env, jobject thiz) {
                  uts.machine, // Machine
                  uts.domainname); // Domain Name
 
-        LOGI("Kernel Info\n %s", info);
+        LOGI("Kernel Info\n%s", info);
         return env->NewStringUTF(info);
     } else {
         LOGE("uname Kernel Information Failed: %s", strerror(errno));

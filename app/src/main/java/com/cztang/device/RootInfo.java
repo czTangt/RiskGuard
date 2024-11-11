@@ -1,5 +1,6 @@
 package com.cztang.device;
 
+import android.media.metrics.LogSessionId;
 import android.os.Build;
 import android.util.Log;
 
@@ -50,10 +51,11 @@ public class RootInfo extends Device{
             "/system/xbin",
             "/vendor/bin",
             "/sbin",
-            "/etc",
-            "/sys",
-            "/proc",
-            "/dev"
+            "/etc"
+//           这里从 vivo 手机上测试发现这些路径都是有读写权限的
+//            "/sys",
+//            "/proc",
+//            "/dev"
     };
 
     public RootInfo(DeviceActivity deviceActivity) {
@@ -69,19 +71,24 @@ public class RootInfo extends Device{
     }
 
     private boolean getBuildInfo(){
-        if (Build.TAGS.equals("test-keys") || Build.FINGERPRINT.contains("userdebug"))
+        if (Build.TAGS.equals("test-keys") || Build.FINGERPRINT.contains("userdebug")){
+            Log.i(TAG,"getBuildInfo");
             return true;
+        }
         return false;
     }
 
-    private boolean getSuInfo(){
+    private boolean getSuInfo() {
         try {
             // 执行 which su
             Process whichSu = Runtime.getRuntime().exec(new String[]{"which", "su"});
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(whichSu.getInputStream()));
-            return bufferedReader.readLine() != null;
+            String suPath = bufferedReader.readLine();
+
+            // 检查 su 路径是否存在且为有效路径
+            return suPath != null && (suPath.startsWith("/sbin/su") || suPath.startsWith("/system/xbin/su"));
         } catch (IOException e) {
-            Log.e(TAG, Objects.requireNonNull(e.getMessage()));
+            Log.e(TAG, e.getMessage() != null ? e.getMessage() : "Error executing 'which su'");
             return false;
         }
     }
@@ -96,6 +103,7 @@ public class RootInfo extends Device{
                 File f = new File(path, filename);
                 boolean fileExists = f.exists(); // 检查文件是否存在,实际调用的是系统调用 faccessat
                 if (fileExists) {
+                    Log.i(TAG,"getFileInfo");
                     return true;
                 }
             }
@@ -144,6 +152,8 @@ public class RootInfo extends Device{
                     // 分割挂载选项并检查是否包含"rw"，以确定该路径是否以读写模式挂载
                     for (String option : mountOptions.split(",")) {
                         if (option.equalsIgnoreCase("rw")) {
+                            Log.i(TAG,"getPermissionInfo");
+                            Log.i(TAG, pathToCheck + " The path is mounted with rw permissions " + line);
                             return true;
                         }
                     }
