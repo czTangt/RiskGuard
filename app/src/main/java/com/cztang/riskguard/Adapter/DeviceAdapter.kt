@@ -43,7 +43,7 @@ class DeviceAdapter(
         payloads: List<Any>
     ) {
         holder as DeviceChildVH
-        holder.binding.childDevice.text = deviceData[groupPosition].childData
+        holder.binding.childDevice.text = deviceData[groupPosition].childData.getOrNull(childPosition)
 
         val childCount = getChildCount(groupPosition)
         val radius = 4.dpToPx()
@@ -113,13 +113,13 @@ class DeviceAdapter(
 
     override fun getGroupCount(): Int = deviceData.size
 
-    override fun getChildCount(groupPosition: Int): Int = 1
+    override fun getChildCount(groupPosition: Int): Int = deviceData[groupPosition].childData.size
 }
 
 private class CircleDrawable : ShapeDrawable(OvalShape()) {
     private val argbEvaluator = ArgbEvaluator()
     private val startColor = 0xffEBF1FD.toInt() // light_blue
-    private val endColor = 0xff11366A.toInt() // dark_blue
+    private val endColor = 0xffEBF1FD.toInt() // light_blue
     var progress: Float = 0f
         set(value) {
             paint.color = argbEvaluator.evaluate(value, startColor, endColor) as Int

@@ -26,12 +26,12 @@ class DeviceActivity : AppCompatActivity() {
 
         // 创建 DeviceDomain 的 ArrayList
         val items = ArrayList<DeviceDomain>().apply {
-            add(DeviceDomain("Root Info", RootInfo(this@DeviceActivity).rootInfo))
-            add(DeviceDomain("Cpu Info", CpuInfo(this@DeviceActivity).cpuInfo))
-            add(DeviceDomain("Serial Info", SerialInfo(this@DeviceActivity).androidId))
-            add(DeviceDomain("System Info", SystemInfo(this@DeviceActivity).systemInfo))
-            add(DeviceDomain("HardDisk Info", Device(this@DeviceActivity).hardDiskInfor))
-            add(DeviceDomain("Kernel Info", Device(this@DeviceActivity).kernelInfor))
+            add(DeviceDomain("Root Info", listOf(RootInfo(this@DeviceActivity).rootInfo)))
+            add(DeviceDomain("Cpu Info", listOf(CpuInfo(this@DeviceActivity).cpuInfo)))
+            add(DeviceDomain("Serial Info", listOf(SerialInfo(this@DeviceActivity).androidId)))
+            add(DeviceDomain("System Info", listOf(SystemInfo(this@DeviceActivity).buildInfo, SystemInfo(this@DeviceActivity).baseband)))
+            add(DeviceDomain("HardDisk Info", listOf(Device(this@DeviceActivity).hardDiskInfor)))
+            add(DeviceDomain("Kernel Info", listOf(Device(this@DeviceActivity).kernelInfor)))
         }
         with(binding.recyclerView) {
             adapter = DeviceAdapter(items)

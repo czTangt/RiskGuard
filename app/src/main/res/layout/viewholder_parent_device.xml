@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="50dp"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
     android:background="@drawable/bg_light"
@@ -15,7 +15,7 @@
     <ImageView
         android:id="@+id/info_device"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +27,7 @@
     <View
         android:id="@+id/view"
         android:layout_width="2dp"
-        android:layout_height="30dp"
+        android:layout_height="18dp"
         android:background="@color/purple_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/parent_device"
@@ -41,7 +41,7 @@
         android:layout_marginStart="16dp"
         android:text="title"
         android:textColor="@color/dark_blue"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,8 +51,8 @@
 
     <ImageView
         android:id="@+id/arrow_device"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginEnd="16dp"
         android:src="@drawable/icon_down_arrow"
         app:layout_constraintBottom_toBottomOf="@+id/parent_device"

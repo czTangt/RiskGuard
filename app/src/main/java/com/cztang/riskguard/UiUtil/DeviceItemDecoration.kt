@@ -9,25 +9,21 @@ import androidx.recyclerview.widget.RecyclerView
 import pokercc.android.expandablerecyclerview.ExpandableAdapter
 import pokercc.android.expandablerecyclerview.ExpandableRecyclerView
 
-/**
- * DeviceItemDecoration 类主要用于在 ExpandableRecyclerView 中绘制分割线和设置项的偏移量。
- */
 class DeviceItemDecoration : RecyclerView.ItemDecoration() {
     private val linePaint = Paint().apply {
-        color = 0xfff6f6f8.toInt()
+        color = 0xffA6A6AF.toInt()
         strokeWidth = 1.dpToPx()
     }
 
-    /**
-     * onDrawOver 方法用于绘制分割线。
-     */
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDrawOver(c, parent, state)
         parent as ExpandableRecyclerView
         val adapter = parent.requireAdapter()
         val layoutManager = parent.layoutManager!!
 
-        // Draw divide line between children item.
+        val leftPadding = 15.dpToPx()
+        val rightPadding = 15.dpToPx()
+
         for (view in parent) {
             val viewHolder = parent.getChildViewHolder(view)
             val params = viewHolder.itemView.layoutParams as RecyclerView.LayoutParams
@@ -38,8 +34,8 @@ class DeviceItemDecoration : RecyclerView.ItemDecoration() {
                 val y = layoutManager.getDecoratedBottom(view) + view.translationY
                 parent.clipAndDrawChild(c, view) {
                     it.drawLine(
-                        parent.paddingStart + 10.dpToPx() + params.marginStart, y,
-                        parent.width - parent.paddingEnd.toFloat() - params.marginEnd, y,
+                        parent.paddingStart + leftPadding + params.marginStart, y,
+                        parent.width - parent.paddingEnd.toFloat() - rightPadding - params.marginEnd, y,
                         linePaint
                     )
                 }
@@ -47,9 +43,6 @@ class DeviceItemDecoration : RecyclerView.ItemDecoration() {
         }
     }
 
-    /**
-     * getItemOffsets 方法用于设置项的偏移量。
-     */
     override fun getItemOffsets(
         outRect: Rect,
         view: View,
@@ -61,7 +54,6 @@ class DeviceItemDecoration : RecyclerView.ItemDecoration() {
         val adapter = parent.requireAdapter()
         val viewHolder = parent.getChildViewHolder(view)
 
-        //Give bottom margin when it is group type or it is the last one of group.
         val isGroup = adapter.isGroup(viewHolder.itemViewType)
         val firstChild = {
             adapter.getItemLayoutPosition(viewHolder as ExpandableAdapter.ViewHolder).childPosition == 0
@@ -69,6 +61,5 @@ class DeviceItemDecoration : RecyclerView.ItemDecoration() {
         if (isGroup || firstChild()) {
             outRect.top = 12.dpToPx().toInt()
         }
-
     }
 }
