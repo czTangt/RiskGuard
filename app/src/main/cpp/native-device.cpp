@@ -6,8 +6,7 @@
 #include <jni.h>
 #include <sys/utsname.h>
 
-// 获取 Disk 信息
-
+// 获取 HardDisk 信息
 extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_cztang_device_Device_getHardDiskInfor(JNIEnv *env, jobject thiz) {
@@ -55,6 +54,7 @@ Java_com_cztang_device_Device_getHardDiskInfor(JNIEnv *env, jobject thiz) {
     return env->NewStringUTF(info);
 }
 
+// 获取 Kernel 信息
 extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_cztang_device_Device_getKernelInfor(JNIEnv *env, jobject thiz) {

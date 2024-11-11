@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cztang.device.CpuInfo
 import com.cztang.device.Device
+import com.cztang.device.RootInfo
 import com.cztang.device.SerialInfo
 import com.cztang.device.SystemInfo
 import com.cztang.riskguard.Domain.DeviceDomain
@@ -25,6 +26,7 @@ class DeviceActivity : AppCompatActivity() {
 
         // 创建 DeviceDomain 的 ArrayList
         val items = ArrayList<DeviceDomain>().apply {
+            add(DeviceDomain("Root Info", RootInfo(this@DeviceActivity).rootInfo))
             add(DeviceDomain("Cpu Info", CpuInfo(this@DeviceActivity).cpuInfo))
             add(DeviceDomain("Serial Info", SerialInfo(this@DeviceActivity).androidId))
             add(DeviceDomain("System Info", SystemInfo(this@DeviceActivity).systemInfo))
