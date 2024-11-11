@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
         val items = ArrayList<OngoingDomain>().apply {
-            add(OngoingDomain("Device Info", "Nov 8, 2024", 0, "icon_device"))
+            add(OngoingDomain("Device Info", "Nov 8, 2024", 80, "icon_device"))
             add(OngoingDomain("Hook Status", "Nov 12, 2024", 0, "icon_hook"))
             add(OngoingDomain("3Food App", "Jun 12, 2023", 25, "icon_hook"))
             add(OngoingDomain("4Food App", "Jun 12, 2023", 80, "icon_hook"))

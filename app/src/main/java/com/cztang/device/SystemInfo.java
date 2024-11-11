@@ -18,15 +18,14 @@ public class SystemInfo extends Device {
     }
 
     public String getBuildInfo() {
-        StringBuilder infoBuilder = new StringBuilder();
 
-        infoBuilder.append("(").append(Build.MODEL); // 设备型号名称
-        infoBuilder.append("/").append(Build.BRAND); // 设备品牌名称
-        // 当前运行的 Android SDK 版本的整数表示。API Level 28 表示 Android 9
-        infoBuilder.append(")--SDK: ").append(Build.VERSION.SDK_INT).append("\n");
+        String infoBuilder = "(" + Build.MODEL + // 设备型号名称
+                "/" + Build.BRAND + // 设备品牌名称
+                // 当前运行的 Android SDK 版本的整数表示。API Level 28 表示 Android 9
+                ")--SDK: " + Build.VERSION.SDK_INT + "\n" +
 
-        //  设备的完整指纹字符串，通常包括制造商、品牌、设备型号和构建类型等信息。
-        infoBuilder.append(Build.FINGERPRINT);
+                //  设备的完整指纹字符串，通常包括制造商、品牌、设备型号和构建类型等信息。
+                Build.FINGERPRINT;
         // infoBuilder.append(Build.getRadioVersion()).append("\n");
         return "BuildInfo: " + infoBuilder;
     }

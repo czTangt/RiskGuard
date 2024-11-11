@@ -1,6 +1,5 @@
 package com.cztang.device;
 
-import android.media.metrics.LogSessionId;
 import android.os.Build;
 import android.util.Log;
 
@@ -17,7 +16,7 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class RootInfo extends Device{
+public class RootInfo extends Device {
 
     // 敏感路径，里面若有特殊的文件可视为root
     public static final String[] targetPaths = {
@@ -63,19 +62,15 @@ public class RootInfo extends Device{
     }
 
     public String getRootInfo() {
-        if(getBuildInfo() || getSuInfo() || getFileInfo() || getPermissionInfo()){
+        if (getBuildInfo() || getSuInfo() || getFileInfo() || getPermissionInfo()) {
             return "This device is rooted";
         }
 
         return "This device is not rooted";
     }
 
-    private boolean getBuildInfo(){
-        if (Build.TAGS.equals("test-keys") || Build.FINGERPRINT.contains("userdebug")){
-            Log.i(TAG,"getBuildInfo");
-            return true;
-        }
-        return false;
+    private boolean getBuildInfo() {
+        return Build.TAGS.equals("test-keys") || Build.FINGERPRINT.contains("userdebug");
     }
 
     private boolean getSuInfo() {
@@ -103,7 +98,6 @@ public class RootInfo extends Device{
                 File f = new File(path, filename);
                 boolean fileExists = f.exists(); // 检查文件是否存在,实际调用的是系统调用 faccessat
                 if (fileExists) {
-                    Log.i(TAG,"getFileInfo");
                     return true;
                 }
             }
@@ -152,8 +146,6 @@ public class RootInfo extends Device{
                     // 分割挂载选项并检查是否包含"rw"，以确定该路径是否以读写模式挂载
                     for (String option : mountOptions.split(",")) {
                         if (option.equalsIgnoreCase("rw")) {
-                            Log.i(TAG,"getPermissionInfo");
-                            Log.i(TAG, pathToCheck + " The path is mounted with rw permissions " + line);
                             return true;
                         }
                     }

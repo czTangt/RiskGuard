@@ -59,7 +59,7 @@ extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_cztang_device_Device_getKernelInfor(JNIEnv *env, jobject thiz) {
     struct utsname uts{};
-    if(uname(&uts) != -1){
+    if (uname(&uts) != -1) {
         char info[4096];
         snprintf(info, sizeof(info),
                  "System Name: %s\n"

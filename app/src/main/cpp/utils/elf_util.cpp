@@ -41,7 +41,7 @@ ElfImg::ElfImg(std::string_view base_name) : elf(base_name) {
     char *section_str = offsetOf<char *>(header, section_header[header->e_shstrndx].sh_offset);
 
     for (int i = 0; i < header->e_shnum; i++, shoff += header->e_shentsize) {
-        auto *section_h = (ElfW(Shdr) *)shoff;
+        auto *section_h = (ElfW(Shdr) *) shoff;
         char *sname = section_h->sh_name + section_str;
         auto entsize = section_h->sh_entsize;
         switch (section_h->sh_type) {

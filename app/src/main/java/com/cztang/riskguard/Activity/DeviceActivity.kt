@@ -1,5 +1,6 @@
 package com.cztang.riskguard.Activity
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,8 +18,11 @@ import pokercc.android.expandablerecyclerview.sample.markets.DeviceAdapter
 class DeviceActivity : AppCompatActivity() {
 
     private var isExpanded = false
+
     // 延迟初始化，lazy 延迟初始化的目的是在需要使用 binding 时才进行初始化，从而避免在 onCreate 方法中直接初始化。
     private val binding by lazy { ActivityDeviceBinding.inflate(layoutInflater) }
+
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -28,7 +32,15 @@ class DeviceActivity : AppCompatActivity() {
             add(DeviceDomain("Root Info", listOf(RootInfo(this@DeviceActivity).rootInfo)))
             add(DeviceDomain("Cpu Info", listOf(CpuInfo(this@DeviceActivity).cpuInfo)))
             add(DeviceDomain("Serial Info", listOf(SerialInfo(this@DeviceActivity).androidId)))
-            add(DeviceDomain("System Info", listOf(SystemInfo(this@DeviceActivity).buildInfo, SystemInfo(this@DeviceActivity).baseband)))
+            add(
+                DeviceDomain(
+                    "System Info",
+                    listOf(
+                        SystemInfo(this@DeviceActivity).buildInfo,
+                        SystemInfo(this@DeviceActivity).baseband
+                    )
+                )
+            )
             add(DeviceDomain("HardDisk Info", listOf(Device(this@DeviceActivity).hardDiskInfor)))
             add(DeviceDomain("Kernel Info", listOf(Device(this@DeviceActivity).kernelInfor)))
         }

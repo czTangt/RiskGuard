@@ -43,7 +43,8 @@ class DeviceAdapter(
         payloads: List<Any>
     ) {
         holder as DeviceChildVH
-        holder.binding.childDevice.text = deviceData[groupPosition].childData.getOrNull(childPosition)
+        holder.binding.childDevice.text =
+            deviceData[groupPosition].childData.getOrNull(childPosition)
 
         val childCount = getChildCount(groupPosition)
         val radius = 4.dpToPx()

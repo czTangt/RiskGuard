@@ -28,7 +28,8 @@ namespace SandHook {
 
         ElfImg(std::string_view elf);
 
-        template<typename T = void *>requires(std::is_pointer_v<T>) constexpr const T
+        template<typename T = void *>
+        requires(std::is_pointer_v<T>) constexpr const T
         getSymbAddress(std::string_view name) const {
             auto offset = getSymbOffset(name, GnuHash(name), ElfHash(name));
             if (offset > 0 && base != nullptr) {
@@ -39,7 +40,8 @@ namespace SandHook {
             }
         }
 
-        template<typename T = void *> requires(std::is_pointer_v<T>) constexpr const T
+        template<typename T = void *>
+        requires(std::is_pointer_v<T>) constexpr const T
         getSymbPrefixFirstAddress(std::string_view prefix) const {
             auto offset = PrefixLookupFirst(prefix);
             if (offset > 0 && base != nullptr) {

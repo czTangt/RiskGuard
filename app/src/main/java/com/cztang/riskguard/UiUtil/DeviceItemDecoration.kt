@@ -34,8 +34,10 @@ class DeviceItemDecoration : RecyclerView.ItemDecoration() {
                 val y = layoutManager.getDecoratedBottom(view) + view.translationY
                 parent.clipAndDrawChild(c, view) {
                     it.drawLine(
-                        parent.paddingStart + leftPadding + params.marginStart, y,
-                        parent.width - parent.paddingEnd.toFloat() - rightPadding - params.marginEnd, y,
+                        parent.paddingStart + leftPadding + params.marginStart,
+                        y,
+                        parent.width - parent.paddingEnd.toFloat() - rightPadding - params.marginEnd,
+                        y,
                         linePaint
                     )
                 }

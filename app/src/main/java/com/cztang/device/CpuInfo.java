@@ -5,10 +5,9 @@ import android.os.Build;
 
 import com.cztang.riskguard.Activity.DeviceActivity;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.BufferedReader;
 
 public class CpuInfo extends Device {
     public CpuInfo(DeviceActivity deviceActivity) {
@@ -34,7 +33,7 @@ public class CpuInfo extends Device {
         return Build.HARDWARE;
     }
 
-    private int getCpuCores(){
+    private int getCpuCores() {
         return Runtime.getRuntime().availableProcessors();
     }
 
@@ -48,8 +47,7 @@ public class CpuInfo extends Device {
         return minFreq;
     }
 
-    public String getCpuInfo()
-    {
+    public String getCpuInfo() {
         return "Cpu Model: " + getCpuModel() + "\n" +
                 "Cpu Cores: " + getCpuCores() + "\n" +
                 "Cpu Max Freq: " + getCpuMaxFreq() + "\n" +
