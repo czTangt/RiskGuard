@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import pokercc.android.expandablerecyclerview.ExpandableAdapter
 import pokercc.android.expandablerecyclerview.ExpandableRecyclerView
 
-class DeviceItemDecoration : RecyclerView.ItemDecoration() {
+class ItemDecoration : RecyclerView.ItemDecoration() {
     private val linePaint = Paint().apply {
         color = 0xffA6A6AF.toInt()
         strokeWidth = 1.dpToPx()

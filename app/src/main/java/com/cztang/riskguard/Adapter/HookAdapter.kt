@@ -13,14 +13,14 @@ import com.cztang.riskguard.databinding.ViewholderChildDeviceBinding
 import com.cztang.riskguard.databinding.ViewholderParentDeviceBinding
 import pokercc.android.expandablerecyclerview.ExpandableAdapter
 
-class DeviceChildVH(val binding: ViewholderChildDeviceBinding) :
+class HookChildVH(val binding: ViewholderChildDeviceBinding) :
     ExpandableAdapter.ViewHolder(binding.root)
 
-class DeviceParentVH(val binding: ViewholderParentDeviceBinding) :
+class HookParentVH(val binding: ViewholderParentDeviceBinding) :
     ExpandableAdapter.ViewHolder(binding.root)
 
-class DeviceAdapter(
-    private val deviceData: List<CommonDomain>
+class HookAdapter(
+    private val hookData: List<CommonDomain>
 ) : ExpandableAdapter<ExpandableAdapter.ViewHolder>() {
     override fun onCreateGroupViewHolder(
         viewGroup: ViewGroup,
@@ -44,7 +44,7 @@ class DeviceAdapter(
     ) {
         holder as HookChildVH
         holder.binding.childDevice.text =
-            deviceData[groupPosition].childData.getOrNull(childPosition)
+            hookData[groupPosition].childData.getOrNull(childPosition)
 
         val childCount = getChildCount(groupPosition)
         val radius = 4.dpToPx()
@@ -84,11 +84,11 @@ class DeviceAdapter(
         payloads: List<Any>
     ) {
         holder as HookParentVH
-        holder.binding.parentDevice.text = deviceData[groupPosition].parentTitle
+        holder.binding.parentDevice.text = hookData[groupPosition].parentTitle
         if (payloads.isEmpty()) {
             val arrowImage = holder.binding.arrowDevice
             arrowImage.rotation = if (expand) -180f else 0f
-            val circleDrawable = CircleDrawableDevice()
+            val circleDrawable = CircleDrawableHook()
             arrowImage.background = circleDrawable
             circleDrawable.progress = if (expand) 1f else 0f
         }
@@ -107,14 +107,14 @@ class DeviceAdapter(
             .rotation(if (expand) -180f else 0f)
             .setUpdateListener {
                 val progress = if (expand) it.animatedFraction else 1 - it.animatedFraction
-                (arrowImage.background as CircleDrawableDevice).progress = progress
+                (arrowImage.background as CircleDrawableHook).progress = progress
             }
             .start()
     }
 
-    override fun getGroupCount(): Int = deviceData.size
+    override fun getGroupCount(): Int = hookData.size
 
-    override fun getChildCount(groupPosition: Int): Int = deviceData[groupPosition].childData.size
+    override fun getChildCount(groupPosition: Int): Int = hookData[groupPosition].childData.size
 
     fun expandAllGroups() {
         for (i in 0 until getGroupCount()) {
@@ -129,7 +129,7 @@ class DeviceAdapter(
     }
 }
 
-private class CircleDrawableDevice : ShapeDrawable(OvalShape()) {
+private class CircleDrawableHook : ShapeDrawable(OvalShape()) {
     private val argbEvaluator = ArgbEvaluator()
     private val startColor = 0xffEBF1FD.toInt() // light_blue
     private val endColor = 0xffEBF1FD.toInt() // light_blue

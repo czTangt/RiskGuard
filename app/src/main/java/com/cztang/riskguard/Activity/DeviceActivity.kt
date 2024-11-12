@@ -9,11 +9,12 @@ import com.cztang.device.Device
 import com.cztang.device.RootInfo
 import com.cztang.device.SerialInfo
 import com.cztang.device.SystemInfo
-import com.cztang.riskguard.Domain.DeviceDomain
-import com.cztang.riskguard.UiUtil.DeviceItemDecoration
+import com.cztang.riskguard.Domain.CommonDomain
+import com.cztang.riskguard.UiUtil.ItemDecoration
 import com.cztang.riskguard.databinding.ActivityDeviceBinding
 import pokercc.android.expandablerecyclerview.ExpandableItemAnimator
 import pokercc.android.expandablerecyclerview.sample.markets.DeviceAdapter
+import pokercc.android.expandablerecyclerview.sample.markets.HookAdapter
 
 class DeviceActivity : AppCompatActivity() {
 
@@ -28,12 +29,12 @@ class DeviceActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // 创建 DeviceDomain 的 ArrayList
-        val items = ArrayList<DeviceDomain>().apply {
-            add(DeviceDomain("Root Info", listOf(RootInfo(this@DeviceActivity).rootInfo)))
-            add(DeviceDomain("Cpu Info", listOf(CpuInfo(this@DeviceActivity).cpuInfo)))
-            add(DeviceDomain("Serial Info", listOf(SerialInfo(this@DeviceActivity).androidId)))
+        val items = ArrayList<CommonDomain>().apply {
+            add(CommonDomain("Root Info", listOf(RootInfo(this@DeviceActivity).rootInfo)))
+            add(CommonDomain("Cpu Info", listOf(CpuInfo(this@DeviceActivity).cpuInfo)))
+            add(CommonDomain("Serial Info", listOf(SerialInfo(this@DeviceActivity).androidId)))
             add(
-                DeviceDomain(
+                CommonDomain(
                     "System Info",
                     listOf(
                         SystemInfo(this@DeviceActivity).buildInfo,
@@ -41,24 +42,24 @@ class DeviceActivity : AppCompatActivity() {
                     )
                 )
             )
-            add(DeviceDomain("HardDisk Info", listOf(Device(this@DeviceActivity).hardDiskInfor)))
-            add(DeviceDomain("Kernel Info", listOf(Device(this@DeviceActivity).kernelInfor)))
+            add(CommonDomain("HardDisk Info", listOf(Device(this@DeviceActivity).hardDiskInfor)))
+            add(CommonDomain("Kernel Info", listOf(Device(this@DeviceActivity).kernelInfor)))
         }
-        with(binding.recyclerView) {
+        with(binding.recyclerViewDevice) {
             adapter = DeviceAdapter(items)
             itemAnimator = ExpandableItemAnimator(this, animChildrenItem = true)
-            addItemDecoration(DeviceItemDecoration())
+            addItemDecoration(ItemDecoration())
             layoutManager = LinearLayoutManager(context)
         }
 
-        binding.viewChange.setOnClickListener {
-            val adapter = binding.recyclerView.adapter as? DeviceAdapter
+        binding.viewChangeDevice.setOnClickListener {
+            val adapter = binding.recyclerViewDevice.adapter as? DeviceAdapter
             if (isExpanded) {
                 adapter?.collapseAllGroups()
-                binding.viewChange.text = "Expand All"
+                binding.viewChangeDevice.text = "Expand All"
             } else {
                 adapter?.expandAllGroups()
-                binding.viewChange.text = "Collapse All"
+                binding.viewChangeDevice.text = "Collapse All"
             }
             isExpanded = !isExpanded
         }
