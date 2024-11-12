@@ -14,7 +14,6 @@ import com.cztang.riskguard.UiUtil.ItemDecoration
 import com.cztang.riskguard.databinding.ActivityDeviceBinding
 import pokercc.android.expandablerecyclerview.ExpandableItemAnimator
 import pokercc.android.expandablerecyclerview.sample.markets.DeviceAdapter
-import pokercc.android.expandablerecyclerview.sample.markets.HookAdapter
 
 class DeviceActivity : AppCompatActivity() {
 

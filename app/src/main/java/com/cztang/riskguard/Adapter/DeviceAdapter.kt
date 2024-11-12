@@ -27,14 +27,14 @@ class DeviceAdapter(
         viewType: Int
     ): ExpandableAdapter.ViewHolder = LayoutInflater.from(viewGroup.context)
         .let { ViewholderParentDeviceBinding.inflate(it, viewGroup, false) }
-        .let { HookParentVH(it) }
+        .let { DeviceParentVH(it) }
 
     override fun onCreateChildViewHolder(
         viewGroup: ViewGroup,
         viewType: Int
     ): ExpandableAdapter.ViewHolder = LayoutInflater.from(viewGroup.context)
         .let { ViewholderChildDeviceBinding.inflate(it, viewGroup, false) }
-        .let { HookChildVH(it) }
+        .let { DeviceChildVH(it) }
 
     override fun onBindChildViewHolder(
         holder: ExpandableAdapter.ViewHolder,
@@ -42,7 +42,7 @@ class DeviceAdapter(
         childPosition: Int,
         payloads: List<Any>
     ) {
-        holder as HookChildVH
+        holder as DeviceChildVH
         holder.binding.childDevice.text =
             deviceData[groupPosition].childData.getOrNull(childPosition)
 
@@ -83,7 +83,7 @@ class DeviceAdapter(
         expand: Boolean,
         payloads: List<Any>
     ) {
-        holder as HookParentVH
+        holder as DeviceParentVH
         holder.binding.parentDevice.text = deviceData[groupPosition].parentTitle
         if (payloads.isEmpty()) {
             val arrowImage = holder.binding.arrowDevice
@@ -100,7 +100,7 @@ class DeviceAdapter(
         animDuration: Long,
         expand: Boolean
     ) {
-        holder as HookParentVH
+        holder as DeviceParentVH
         val arrowImage = holder.binding.arrowDevice
         arrowImage.animate()
             .setDuration(animDuration)
