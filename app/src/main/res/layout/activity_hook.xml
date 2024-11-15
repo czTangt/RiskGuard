@@ -33,7 +33,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/bg_device"
         android:orientation="vertical">
 
@@ -45,7 +45,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="15dp"
             android:text="Hook"
-            android:textColor="@color/dark_blue"
+            android:textColor="@color/qiubo_blue"
             android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,6 +57,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:textColor="@color/dark_blue"
+            android:fontFamily="sans-serif-light"
             android:text="Status"
             android:textSize="42sp"
             android:textStyle="bold"
@@ -70,8 +72,8 @@
         <TextView
             android:id="@+id/outputDevice"
             android:layout_width="0dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="24dp"
+            android:layout_height="260dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/bg_output"
             android:elevation="4dp"
             android:fontFamily="sans-serif-light"
@@ -80,7 +82,7 @@
             android:paddingBottom="10dp"
             android:scrollbars="vertical"
             android:text="plz click the button"
-            android:textSize="18sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -93,26 +95,28 @@
             android:id="@+id/view"
             android:layout_width="280dp"
             android:layout_height="3dp"
-            android:background="@color/purple_700"
+            android:background="@color/qiubo_blue"
             android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detectionHook"
-            app:layout_constraintVertical_bias="0.5" />
+            app:layout_constraintTop_toBottomOf="@+id/outputDevice"
+            app:layout_constraintVertical_bias="0.15" />
 
         <Button
-            android:id="@+id/button"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/bg_button_shape"
-            android:text="click"
+            android:id="@+id/button_hook"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="40dp"
+            android:background="@drawable/bg_output"
+            android:text="Hook Info"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detectionHook"
-            app:layout_constraintVertical_bias="0.735" />
+            app:layout_constraintTop_toBottomOf="@+id/outputDevice"
+            app:layout_constraintVertical_bias="0.2"
+            app:layout_constraintWidth_percent="0.8" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,7 +33,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/bg_device"
         android:orientation="vertical">
 
@@ -71,7 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="20dp"
             android:contentDescription="@string/app_name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title_device" />
