@@ -39,6 +39,7 @@ public class SerialInfo extends Device {
         String serial2 = getSerialNumbers2();
 
         if (serial1.equals(serial2)) {
+            Log.i(TAG, "Serial Number: " + serial1);
             return "Serial Number: " + serial1;
         } else {
             return "Error: Failed to get serial number ";

@@ -145,7 +145,7 @@ bool prettyMethodHookStatus() {
          local_crc32_prettymethod_value, mem_crc32_prettymethod_value);
     if (local_crc32_prettymethod_value != mem_crc32_prettymethod_value) {
         isHook = true;
-//        LOGE("PrettyMethod hook detected");
+        LOGE("PrettyMethod hook detected");
     }
     close(fd);
     return isHook;

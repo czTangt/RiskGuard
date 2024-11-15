@@ -70,7 +70,11 @@ public class RootInfo extends Device {
     }
 
     private boolean getBuildInfo() {
-        return Build.TAGS.equals("test-keys") || Build.FINGERPRINT.contains("userdebug");
+        if (Build.TAGS.equals("test-keys") || Build.FINGERPRINT.contains("userdebug")) {
+            Log.i(TAG, "BuildInfo: This device is rooted");
+            return true;
+        }
+        return false;
     }
 
     private boolean getSuInfo() {
@@ -81,7 +85,11 @@ public class RootInfo extends Device {
             String suPath = bufferedReader.readLine();
 
             // 检查 su 路径是否存在且为有效路径
-            return suPath != null && (suPath.startsWith("/sbin/su") || suPath.startsWith("/system/xbin/su"));
+            if (suPath != null && (suPath.startsWith("/sbin/su") || suPath.startsWith("/system/xbin/su"))){
+                Log.i(TAG, "SuInfo: su file path -> " + suPath);
+                return true;
+            }
+            return false;
         } catch (IOException e) {
             Log.e(TAG, e.getMessage() != null ? e.getMessage() : "Error executing 'which su'");
             return false;
@@ -98,6 +106,7 @@ public class RootInfo extends Device {
                 File f = new File(path, filename);
                 boolean fileExists = f.exists(); // 检查文件是否存在,实际调用的是系统调用 faccessat
                 if (fileExists) {
+                    Log.i(TAG, "FileInfo: " + filename + " file path -> " + f.getAbsolutePath());
                     return true;
                 }
             }
@@ -146,6 +155,7 @@ public class RootInfo extends Device {
                     // 分割挂载选项并检查是否包含"rw"，以确定该路径是否以读写模式挂载
                     for (String option : mountOptions.split(",")) {
                         if (option.equalsIgnoreCase("rw")) {
+                            Log.i(TAG, "PermissionInfo: " + pathToCheck + " is mounted with read-write permissions");
                             return true;
                         }
                     }

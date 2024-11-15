@@ -18,16 +18,20 @@ public class SystemInfo extends Device {
     }
 
     public String getBuildInfo() {
+        StringBuilder infoBuilder = new StringBuilder();
 
-        String infoBuilder = "(" + Build.MODEL + // 设备型号名称
-                "/" + Build.BRAND + // 设备品牌名称
-                // 当前运行的 Android SDK 版本的整数表示。API Level 28 表示 Android 9
-                ")--SDK: " + Build.VERSION.SDK_INT + "\n" +
+        // Device Model
+        infoBuilder.append("Model: ").append(Build.MODEL).append("\n");
+        // Device Brand
+        infoBuilder.append("Brand: ").append(Build.BRAND).append("\n");
+        // Android SDK Version
+        infoBuilder.append("SDK Version: ").append(Build.VERSION.SDK_INT).append("\n");
+        // Device Fingerprint
+        infoBuilder.append("Fingerprint: ").append(Build.FINGERPRINT);
 
-                //  设备的完整指纹字符串，通常包括制造商、品牌、设备型号和构建类型等信息。
-                Build.FINGERPRINT;
-        // infoBuilder.append(Build.getRadioVersion()).append("\n");
-        return "BuildInfo: " + infoBuilder;
+        String buildInfo = infoBuilder.toString();
+        Log.i(TAG, "BuildInfo: " + "\n" + buildInfo);
+        return buildInfo;
     }
 
     // 获取基带版本，和 Build.getRadioVersion() 方法效果相同，但后者在 API 24 及以上版本可用
@@ -42,7 +46,6 @@ public class SystemInfo extends Device {
                 Object invoker = HiddenApiBypass.newInstance(clazz);
                 Object result = HiddenApiBypass.invoke(clazz, invoker, "get", "gsm.version.baseband", "no message");
                 retval = (String) result;
-                Log.i(TAG, (String) result);
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -54,13 +57,13 @@ public class SystemInfo extends Device {
                 Method get = clazz.getDeclaredMethod("get", String.class, String.class);
                 Object result = get.invoke(invoker, "gsm.version.baseband", "no message");
                 assert result != null;
-                Log.i(TAG, (String) result);
                 retval = (String) result;
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
                      InvocationTargetException | NoSuchMethodException e) {
                 e.printStackTrace();
             }
         }
+        Log.i(TAG, "BasebandInfo: " + retval);
         return "BasebandInfo: " + retval;
     }
 

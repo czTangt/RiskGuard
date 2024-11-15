@@ -2,6 +2,7 @@ package com.cztang.device;
 
 
 import android.os.Build;
+import android.util.Log;
 
 import com.cztang.riskguard.Activity.DeviceActivity;
 
@@ -48,6 +49,12 @@ public class CpuInfo extends Device {
     }
 
     public String getCpuInfo() {
+        Log.i(TAG, "CpuInfo: " + "\n" +
+                "Cpu Model: " + getCpuModel() + "\n" +
+                "Cpu Cores: " + getCpuCores() + "\n" +
+                "Cpu Max Freq: " + getCpuMaxFreq() + "\n" +
+                "Cpu Min Freq: " + getCpuMinFreq());
+
         return "Cpu Model: " + getCpuModel() + "\n" +
                 "Cpu Cores: " + getCpuCores() + "\n" +
                 "Cpu Max Freq: " + getCpuMaxFreq() + "\n" +
