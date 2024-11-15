@@ -1,6 +1,7 @@
 package com.cztang.riskguard.Activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,6 +45,8 @@ class DeviceActivity : AppCompatActivity() {
             add(CommonDomain("HardDisk Info", listOf(Device(this@DeviceActivity).hardDiskInfor)))
             add(CommonDomain("Kernel Info", listOf(Device(this@DeviceActivity).kernelInfor)))
         }
+
+        // 配置 RecyclerView
         with(binding.recyclerViewDevice) {
             adapter = DeviceAdapter(items)
             itemAnimator = ExpandableItemAnimator(this, animChildrenItem = true)
@@ -51,6 +54,7 @@ class DeviceActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context)
         }
 
+        // 配置 Expand All 按钮
         binding.viewChangeDevice.setOnClickListener {
             val adapter = binding.recyclerViewDevice.adapter as? DeviceAdapter
             if (isExpanded) {
@@ -61,6 +65,13 @@ class DeviceActivity : AppCompatActivity() {
                 binding.viewChangeDevice.text = "Collapse All"
             }
             isExpanded = !isExpanded
+        }
+
+        // 配置返回按钮
+        binding.backDevice.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }
