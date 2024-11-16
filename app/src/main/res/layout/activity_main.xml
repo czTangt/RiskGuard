@@ -7,7 +7,7 @@
     tools:context=".Activity.MainActivity">
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/scrollView_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,14 +22,14 @@
             android:paddingStart="16dp"
             android:paddingTop="16dp"
             android:paddingEnd="16dp"
-            android:paddingBottom="100dp">
+            android:paddingBottom="80dp">
 
             <TextView
                 android:id="@+id/title_main"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Hi, Tcz"
+                android:text="@string/hello1"
                 android:textColor="@color/dark_blue"
                 android:textSize="28sp" />
 
@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Good Morning"
+                android:text="@string/hello2"
                 android:textColor="@color/dark_blue"
                 android:textSize="18sp" />
 
@@ -52,12 +52,13 @@
                 android:drawableStart="@drawable/icon_search"
                 android:drawablePadding="16dp"
                 android:ems="10"
-                android:hint="Search.."
+                android:hint="@string/search"
                 android:inputType="text"
                 android:padding="16dp"
                 android:textColor="@color/dark_blue"
                 android:textColorHint="@color/dark_blue"
-                android:textSize="18dp" />
+                android:textSize="18sp"
+                tools:ignore="Autofill" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -70,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="Welcome"
+                    android:text="@string/hello3"
                     android:textColor="@color/dark_blue"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -81,7 +82,7 @@
                     android:id="@+id/subwelcomeText_main"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Let 's Schedule your\n project"
+                    android:text="@string/hello4"
                     android:textColor="@color/dark_blue"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -97,7 +98,8 @@
                     android:src="@drawable/icon_person"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
@@ -109,19 +111,20 @@
 
                 <TextView
                     android:id="@+id/ComponentText_main"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Ongoing Components"
                     android:textColor="@color/dark_blue"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/project_all_main"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="View all"
+                    android:text="@string/view_all"
                     android:textColor="@color/dark_blue"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -137,164 +140,139 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView_main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <com.google.android.material.bottomappbar.BottomAppBar
+        <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="match_parent"
-            android:id="@+id/app_bar"
-            app:fabCradleMargin="8dp"
-            app:fabCradleRoundedCornerRadius="50dp"
-            app:fabCradleVerticalOffset="6dp"
-            android:layout_gravity="bottom"
-            android:layout_height="65dp">
-
-
+            android:layout_height="60dp"
+            android:background="@drawable/bg_output"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="12dp"
+            android:padding="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:padding="4dp">
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:orientation="vertical"
+                    tools:ignore="UseCompoundDrawables">
+
 
                     <ImageView
                         android:id="@+id/pic_home_main"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:layout_gravity="center"
-                        app:srcCompat="@drawable/icon_home" />
+                        app:srcCompat="@drawable/icon_home"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/homeText_main"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Home"
+                        android:layout_marginTop="1dp"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:text="@string/home"
                         android:textAlignment="center"
-                        android:textColor="@color/dark_blue"
-                        android:textSize="12sp" />
+                        android:textColor="@color/dark_blue" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:importantForAccessibility="no"
+                    android:orientation="vertical"
+                    tools:ignore="UseCompoundDrawables">
+
 
                     <ImageView
-                        android:id="@+id/pic_payment_main"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:id="@+id/pic_money_main"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:layout_gravity="center"
-                        app:srcCompat="@drawable/icon_home" />
+                        app:srcCompat="@drawable/icon_home"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/paymentText_main"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Payment"
+                        android:layout_marginTop="1dp"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:text="@string/payment"
                         android:textAlignment="center"
-                        android:textColor="@color/dark_blue"
-                        android:textSize="12sp" />
+                        android:textColor="@color/dark_blue" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="0.2"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
                     android:orientation="vertical"
-                    android:visibility="invisible">
+                    tools:ignore="UseCompoundDrawables">
+
 
                     <ImageView
-                        android:id="@+id/imageView23"
-                        android:layout_width="16dp"
-                        android:layout_height="21dp"
+                        android:id="@+id/pic_profile_mai"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:layout_gravity="center"
-                        app:srcCompat="@drawable/icon_home" />
-
-                    <TextView
-                        android:id="@+id/textView73"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Home"
-                        android:textAlignment="center"
-                        android:textColor="@color/dark_blue"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/pic_task_main"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        app:srcCompat="@drawable/icon_home" />
-
-                    <TextView
-                        android:id="@+id/taskText_main"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="My Task"
-                        android:textAlignment="center"
-                        android:textColor="@color/dark_blue"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/profileBtn_main"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/pic_profile_main"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        app:srcCompat="@drawable/icon_profile" />
+                        app:srcCompat="@drawable/icon_home"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/profileText_main"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Profile"
+                        android:layout_marginTop="1dp"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:text="@string/profile"
                         android:textAlignment="center"
-                        android:textColor="@color/dark_blue"
-                        android:textSize="12sp" />
+                        android:textColor="@color/dark_blue" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25"
+                    android:orientation="vertical"
+                    tools:ignore="UseCompoundDrawables">
+
+
+                    <ImageView
+                        android:id="@+id/pic_setting_main"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/icon_home"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/settingText_main"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:text="@string/setting"
+                        android:textAlignment="center"
+                        android:textColor="@color/dark_blue" />
                 </LinearLayout>
             </LinearLayout>
-        </com.google.android.material.bottomappbar.BottomAppBar>
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="不知道作用模块"
-            android:src="@drawable/icon_add"
-            app:backgroundTint="@color/dark_blue"
-            app:maxImageSize="20dp"
-            app:layout_anchor="@id/app_bar"
-            app:tint="@color/white"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

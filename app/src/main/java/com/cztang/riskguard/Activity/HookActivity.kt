@@ -1,6 +1,7 @@
 package com.cztang.riskguard.Activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.cztang.riskguard.databinding.ActivityHookBinding
@@ -15,5 +16,11 @@ class HookActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        // 配置返回按钮
+        binding.backHook.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
     }
 }

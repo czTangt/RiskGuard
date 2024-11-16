@@ -69,8 +69,7 @@ class DeviceActivity : AppCompatActivity() {
 
         // 配置返回按钮
         binding.backDevice.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
     }

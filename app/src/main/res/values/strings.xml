@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">RiskGuard</string>
+    <string name="hello1">Hi, Tcz</string>
+    <string name="hello2">Good Morning</string>
+    <string name="search">Search..</string>
+    <string name="hello3">Welcome</string>
+    <string name="hello4">Let \'s Schedule your\n project</string>
+    <string name="view_all">View all</string>
+    <string name="home">Home</string>
+    <string name="payment">payment</string>
+    <string name="profile">Profile</string>
+    <string name="setting">Setting</string>
+    <string name="device">Device</string>
+    <string name="expand_all">Expand All</string>
+    <string name="hook">Hook</string>
+    <string name="status">Status</string>
+    <string name="plz_input">plz click the button</string>
+    <string name="hook_info">Hook Info</string>
 </resources>

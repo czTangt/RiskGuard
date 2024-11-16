@@ -44,13 +44,12 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="15dp"
-            android:text="Device"
+            android:text="@string/device"
             android:textColor="@color/dark_blue"
             android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="HardcodedText" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/view_change_device"
@@ -58,13 +57,12 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:padding="10dp"
-            android:text="Expand All"
+            android:text="@string/expand_all"
             android:textColor="@color/yunshan_blue"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/title_device"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/title_device"
-            tools:ignore="HardcodedText" />
+            app:layout_constraintTop_toTopOf="@id/title_device" />
 
         <pokercc.android.expandablerecyclerview.ExpandableRecyclerView
             android:id="@+id/recycler_view_device"
