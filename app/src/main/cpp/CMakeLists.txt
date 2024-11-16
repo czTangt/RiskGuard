@@ -36,13 +36,24 @@ add_library(
         device
         SHARED
         # List C/C++ source files with relative paths to this CMakeLists.txt.
-        native-device.cpp)
-
+        native/device.cpp)
+add_library(
+        hook
+        SHARED
+        native/hook.cpp
+        include/hookDet.h
+        include/elf_util.h
+        utils/elf_util.cpp
+        detection/hookDet.cpp)
 # Specifies libraries CMake should link to your target library. You
 # can link libraries from various origins, such as libraries defined in this
 # build script, prebuilt third-party libraries, or Android system libraries.
 target_link_libraries(
         device
         # List libraries link to the target library
+        android
+        log)
+target_link_libraries(
+        hook
         android
         log)

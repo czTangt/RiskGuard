@@ -2,7 +2,7 @@
 // Created by NU on 2024/11/12.
 //
 
-#include "../include/hooDet.h"
+#include "../include/hookDet.h"
 
 // crc32 计算
 uint32_t calculateCRC32(const unsigned char *data, size_t length) {
@@ -159,25 +159,27 @@ int callStackDetection(JNIEnv *env) {
     void *nativeFillInStackTrace = libart.getSymbAddress(
             "_ZN3artL32Throwable_nativeFillInStackTraceEP7_JNIEnvP7_jclass");
 
-    jobject(*my_nativeFillInStackTrace)(JNIEnv * , jclass); // 函数指针
+    jobject (*my_nativeFillInStackTrace)(JNIEnv *, jclass); // 函数指针
     my_nativeFillInStackTrace = reinterpret_cast<jobject (*)(JNIEnv *,
                                                              jclass)>(nativeFillInStackTrace);
-    jclass MainActivity = env->FindClass("com/cztang/riskguard/Activity/HookActivity");
-    jobject javaStackState = my_nativeFillInStackTrace(env, MainActivity);
 
+    // 这里需要使用 HookActivity.java，使用 kotlin 的话会出现问题，解析不了后面的堆栈信息
+    // 同时在这里使用时，下面的 for 循环中的 des 需要扩充，因为这里的名称比只使用 java 的名称要长
+    jclass activity = env->FindClass("com/cztang/riskguard/Activity/HookActivity");
+    jobject javaStackState = my_nativeFillInStackTrace(env, activity);
     // 获取 libart nativeGetStackTrace，获取 objAry
     void *nativeGetStackTrace = libart.getSymbAddress(
             "_ZN3artL29Throwable_nativeGetStackTraceEP7_JNIEnvP7_jclassP8_jobject");
 
-    jobjectArray(*my_nativeGetStackTrace)(JNIEnv * , jclass, jobject); // 函数指针
+    jobjectArray (*my_nativeGetStackTrace)(JNIEnv *, jclass, jobject); // 函数指针
     my_nativeGetStackTrace = reinterpret_cast<jobjectArray (*)(JNIEnv *, jclass,
                                                                jobject)>(nativeGetStackTrace);
-    jobjectArray objAry = my_nativeGetStackTrace(env, MainActivity, javaStackState);
+    jobjectArray objAry = my_nativeGetStackTrace(env, activity, javaStackState);
 
     jsize length = env->GetArrayLength(objAry);
 
-    std::list <std::string> myList;
-    std::set <std::string> mySet;
+    std::list<std::string> myList;
+    std::set<std::string> mySet;
 
     // 遍历 objAry， 获取 className, methodName, fileName, lineNumber
     for (int i = 0; i < length; i++) {
@@ -198,7 +200,7 @@ int callStackDetection(JNIEnv *env) {
             LOGI("%s -> %s(%s: %d)", env->GetStringUTFChars(className, 0),
                  env->GetStringUTFChars(methodName, 0), env->GetStringUTFChars(fileName, 0),
                  lineNumber);
-            char des[128];
+            char des[256];
             sprintf(des, "%s -> %s(%s: %d)", env->GetStringUTFChars(className, 0),
                     env->GetStringUTFChars(methodName, 0), env->GetStringUTFChars(fileName, 0),
                     lineNumber);

@@ -85,7 +85,7 @@ public class RootInfo extends Device {
             String suPath = bufferedReader.readLine();
 
             // 检查 su 路径是否存在且为有效路径
-            if (suPath != null && (suPath.startsWith("/sbin/su") || suPath.startsWith("/system/xbin/su"))){
+            if (suPath != null && (suPath.startsWith("/sbin/su") || suPath.startsWith("/system/xbin/su"))) {
                 Log.i(TAG, "SuInfo: su file path -> " + suPath);
                 return true;
             }

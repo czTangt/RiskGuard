@@ -2,7 +2,7 @@
 // Created by NU on 2024/11/11.
 //
 
-#include "include/deviceDet.h"
+#include "../include/deviceDet.h"
 #include <jni.h>
 #include <sys/utsname.h>
 

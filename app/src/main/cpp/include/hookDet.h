@@ -2,13 +2,14 @@
 // Created by NU on 2024/11/12.
 //
 
-#ifndef RISKGUARD_HOODET_H
-#define RISKGUARD_HOODET_H
+#ifndef RISKGUARD_HOOKDET_H
+#define RISKGUARD_HOOKDET_H
 
 #pragma once
+
 #include "../include/elf_util.h"
 #include "../include/config.h"
-#include <stdint.h>
+#include <cstdint>
 #include <zlib.h>
 #include <vector>
 #include <jni.h>
@@ -28,4 +29,4 @@ bool prettyMethodHookStatus();
 int callStackDetection(JNIEnv *env);
 
 
-#endif //RISKGUARD_HOODET_H
+#endif //RISKGUARD_HOOKDET_H
