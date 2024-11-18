@@ -12,6 +12,7 @@ uint32_t calculateCRC32(const unsigned char *data, size_t length) {
 }
 
 bool openHookStatus() {
+    //TODO 这里之后添加对于 pthread_create, dlopen, strstr 等函数的检测
     bool isHook = false;
     // 获取 libc open_offset
     SandHook::ElfImg libc("libc.so");
