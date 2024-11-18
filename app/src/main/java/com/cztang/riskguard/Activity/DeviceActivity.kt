@@ -28,7 +28,7 @@ class DeviceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        // 创建 DeviceDomain 的 ArrayList
+        // 创建 CommonDomain 的 ArrayList
         val items = ArrayList<CommonDomain>().apply {
             add(CommonDomain("Root Info", listOf(RootInfo(this@DeviceActivity).rootInfo)))
             add(CommonDomain("Cpu Info", listOf(CpuInfo(this@DeviceActivity).cpuInfo)))

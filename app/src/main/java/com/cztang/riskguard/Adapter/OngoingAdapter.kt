@@ -35,7 +35,7 @@ class OngoingAdapter(private val items: ArrayList<OngoingDomain>) :
         return ViewHolder(inflater)
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "DiscouragedApi")
     override fun onBindViewHolder(@NonNull holder: ViewHolder, position: Int) {
         holder.title.text = items[position].title
         holder.date.text = items[position].data

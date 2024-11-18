@@ -44,7 +44,7 @@ class DeviceAdapter(
     ) {
         holder as DeviceChildVH
         holder.binding.childDevice.text =
-            deviceData[groupPosition].childData.getOrNull(childPosition)
+            deviceData[groupPosition].data.getOrNull(childPosition)
 
         val childCount = getChildCount(groupPosition)
         val radius = 4.dpToPx()
@@ -84,7 +84,7 @@ class DeviceAdapter(
         payloads: List<Any>
     ) {
         holder as DeviceParentVH
-        holder.binding.parentDevice.text = deviceData[groupPosition].parentTitle
+        holder.binding.parentDevice.text = deviceData[groupPosition].title
         if (payloads.isEmpty()) {
             val arrowImage = holder.binding.arrowDevice
             arrowImage.rotation = if (expand) -180f else 0f
@@ -114,7 +114,7 @@ class DeviceAdapter(
 
     override fun getGroupCount(): Int = deviceData.size
 
-    override fun getChildCount(groupPosition: Int): Int = deviceData[groupPosition].childData.size
+    override fun getChildCount(groupPosition: Int): Int = deviceData[groupPosition].data.size
 
     fun expandAllGroups() {
         for (i in 0 until getGroupCount()) {

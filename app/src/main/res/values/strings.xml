@@ -9,11 +9,12 @@
     <string name="home">Home</string>
     <string name="payment">payment</string>
     <string name="profile">Profile</string>
-    <string name="setting">Setting</string>
+    <string name="exit">Exit</string>
     <string name="device">Device</string>
     <string name="expand_all">Expand All</string>
     <string name="hook">Hook</string>
     <string name="status">Status</string>
     <string name="plz_input">plz click the button</string>
     <string name="hook_info">Hook Info</string>
+    <string name="android_programmer">Android Programmer</string>
 </resources>
