@@ -38,27 +38,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
                 android:text="@string/hello2"
                 android:textColor="@color/dark_blue"
                 android:textSize="18sp" />
-
-            <EditText
-                android:id="@+id/searchText_main"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_edittext"
-                android:drawableStart="@drawable/icon_search"
-                android:drawablePadding="16dp"
-                android:ems="10"
-                android:hint="@string/search"
-                android:inputType="text"
-                android:padding="16dp"
-                android:textColor="@color/dark_blue"
-                android:textColorHint="@color/dark_blue"
-                android:textSize="18sp"
-                tools:ignore="Autofill" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -105,7 +88,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginBottom="16dp"
                 android:orientation="horizontal">
 
@@ -116,17 +99,10 @@
                     android:layout_weight="1"
                     android:text="Ongoing Components"
                     android:textColor="@color/dark_blue"
-                    android:textSize="16sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
 
-                <TextView
-                    android:id="@+id/project_all_main"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/view_all"
-                    android:textColor="@color/dark_blue"
-                    android:textSize="14sp" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView

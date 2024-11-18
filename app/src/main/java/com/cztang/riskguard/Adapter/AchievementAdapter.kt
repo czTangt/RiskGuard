@@ -13,10 +13,13 @@ import com.cztang.riskguard.Domain.AchievementDomain
 import com.cztang.riskguard.R
 
 class AchievementAdapter(private val items: ArrayList<AchievementDomain>) :
-    RecyclerView.Adapter<AchievementAdapter.ViewHolder>(){
+    RecyclerView.Adapter<AchievementAdapter.ViewHolder>() {
     private var context: Context? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AchievementAdapter.ViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): AchievementAdapter.ViewHolder {
         context = parent.context
         val inflater =
             LayoutInflater.from(context).inflate(R.layout.viewholder_achievement, parent, false)
@@ -43,7 +46,7 @@ class AchievementAdapter(private val items: ArrayList<AchievementDomain>) :
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var title : TextView = itemView.findViewById(R.id.titleText_achievement)
+        var title: TextView = itemView.findViewById(R.id.titleText_achievement)
         var status: TextView = itemView.findViewById(R.id.statusText_achievement)
         var pic: ImageView = itemView.findViewById(R.id.pic_achievement)
     }

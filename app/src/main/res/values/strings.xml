@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">RiskGuard</string>
-    <string name="hello1">Hi, Tcz</string>
+    <string name="hello1">Hi, czTangt</string>
     <string name="hello2">Good Morning</string>
     <string name="search">Search..</string>
     <string name="hello3">Welcome</string>
-    <string name="hello4">Let \'s Schedule your\n project</string>
+    <string name="hello4">Let \'s schedule your\nproject</string>
     <string name="view_all">View all</string>
     <string name="home">Home</string>
     <string name="payment">payment</string>

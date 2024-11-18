@@ -8,7 +8,7 @@
 extern "C"
 JNIEXPORT jstring JNICALL
 Java_com_cztang_hook_Hook_getHookInfo(JNIEnv *env, jobject thiz) {
-    std::string hookInfo ;
+    std::string hookInfo;
     if (openHookStatus()) {
         hookInfo += "open func hook detected\n";
     }
@@ -22,7 +22,7 @@ Java_com_cztang_hook_Hook_getHookInfo(JNIEnv *env, jobject thiz) {
     }
 
     int callStack = callStackDetection(env);
-    if(callStack){
+    if (callStack) {
         hookInfo += "callStackDetection: \n";
         switch (callStackDetection(env)) {
             case 0:
@@ -39,7 +39,7 @@ Java_com_cztang_hook_Hook_getHookInfo(JNIEnv *env, jobject thiz) {
                 break;
         }
     }
-    if (hookInfo.empty()){
+    if (hookInfo.empty()) {
         hookInfo = "No hook trace detected";
     }
     return env->NewStringUTF(hookInfo.c_str());

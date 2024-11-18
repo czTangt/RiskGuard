@@ -23,11 +23,39 @@ class DeviceActivity : AppCompatActivity() {
     // 延迟初始化，lazy 延迟初始化的目的是在需要使用 binding 时才进行初始化，从而避免在 onCreate 方法中直接初始化。
     private val binding by lazy { ActivityDeviceBinding.inflate(layoutInflater) }
 
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        // 初始化 RecyclerView
+        initRecyclerView()
+        // 初始化按钮
+        initButtonView()
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun initButtonView() {
+        // 配置 Expand All 按钮
+        binding.viewChangeDevice.setOnClickListener {
+            val adapter = binding.recyclerViewDevice.adapter as? DeviceAdapter
+            if (isExpanded) {
+                adapter?.collapseAllGroups()
+                binding.viewChangeDevice.text = "Expand All"
+            } else {
+                adapter?.expandAllGroups()
+                binding.viewChangeDevice.text = "Collapse All"
+            }
+            isExpanded = !isExpanded
+        }
+
+        // 配置返回按钮
+        binding.backDevice.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+    }
+
+    private fun initRecyclerView() {
         // 创建 CommonDomain 的 ArrayList
         val items = ArrayList<CommonDomain>().apply {
             add(CommonDomain("Root Info", listOf(RootInfo(this@DeviceActivity).rootInfo)))
@@ -52,25 +80,6 @@ class DeviceActivity : AppCompatActivity() {
             itemAnimator = ExpandableItemAnimator(this, animChildrenItem = true)
             addItemDecoration(ItemDecoration())
             layoutManager = LinearLayoutManager(context)
-        }
-
-        // 配置 Expand All 按钮
-        binding.viewChangeDevice.setOnClickListener {
-            val adapter = binding.recyclerViewDevice.adapter as? DeviceAdapter
-            if (isExpanded) {
-                adapter?.collapseAllGroups()
-                binding.viewChangeDevice.text = "Expand All"
-            } else {
-                adapter?.expandAllGroups()
-                binding.viewChangeDevice.text = "Collapse All"
-            }
-            isExpanded = !isExpanded
-        }
-
-        // 配置返回按钮
-        binding.backDevice.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
         }
     }
 }

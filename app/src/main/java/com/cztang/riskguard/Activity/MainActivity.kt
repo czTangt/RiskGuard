@@ -45,8 +45,8 @@ class MainActivity : AppCompatActivity() {
         val items = ArrayList<OngoingDomain>().apply {
             add(OngoingDomain("Device Info", "Nov 8, 2024", 80, "icon_device"))
             add(OngoingDomain("Hook Status", "Nov 12, 2024", 90, "icon_hook"))
-            add(OngoingDomain("3Food App", "Jun 12, 2023", 25, "icon_hook"))
-            add(OngoingDomain("4Food App", "Jun 12, 2023", 80, "icon_hook"))
+            add(OngoingDomain("3Food App", "Jun 12, 2023", 0, "icon_folder"))
+            add(OngoingDomain("4Food App", "Jun 12, 2023", 0, "icon_network"))
         }
         binding.viewOngoing.layoutManager = GridLayoutManager(this, 2)
         adapterOngoing = OngoingAdapter(items)
